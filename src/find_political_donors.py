@@ -4,6 +4,12 @@ import statistics
 import datetime
 
 def isValid(item, category):
+    '''
+    check if the item is valid for in the category.
+    
+    input strings
+    returns True or False    
+    '''
     # OTHER_ID should be empty for "individual contributions"
     if category == 'OTHER_ID':
         return item == ''
@@ -40,14 +46,10 @@ def isValid(item, category):
             return False
         if year > 2017 or year < 2015:
             return False
-            
     return True
-
-
 
 def main():
     print("Loading...")
-    
     input_path = './input/itcont.txt'
     output_zip = './output/medianvals_by_zip.txt'
     output_date = './output/medianvals_by_date.txt'
@@ -59,7 +61,9 @@ def main():
     else:
         print(" Path Error" )
         return
-        
+    
+    # data will be stored in 2 dictionaries: zipcode_dic and date_dic
+    # the keys of the dictionaries are ID+zipcode and ID+date
     zipcode_dic = {}
     date_dic = {}
     with open(input_path, "r") as inputfile:
@@ -86,7 +90,6 @@ def main():
                     ZIP_CODE = line_list[10][:5]                
                     id_zip = CMTE_ID + ZIP_CODE
                     
-                    
                     # zipcode_dic[id_zip] records the contributions history until now of this id and this zipcode
                     if not id_zip in zipcode_dic:
                         zipcode_dic[id_zip] = [int(TRANSACTION_AMT)]
@@ -109,7 +112,6 @@ def main():
                         date_dic[id_date] = [int(TRANSACTION_AMT)]
                     else:
                         date_dic[id_date].append(int(TRANSACTION_AMT))
-                                
     print("Medianvals_by_zip complete")
     
     # After all the input read and date_dic built, calculate median and write to file
@@ -125,9 +127,7 @@ def main():
             median = round(statistics.median(date_dic[i]))
             outputfile.write(CMTE_ID + '|' + TRANSACTION_DT + '|' + str(median) + '|' + str(len(date_dic[i])) + '|' + str(sum(date_dic[i])))
             outputfile.write('\n')
-
     print("Medianvals_by_date complete...")                    
-
     
 start_time = time.time()
 main()
