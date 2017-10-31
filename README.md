@@ -55,7 +55,7 @@ To run the tests, `insight_testsuite~$ ./run_tests.sh`
 
 
 # Details of the tests
-1. test_1: test case provided by Insight.
-2. test_2: based on test_1, adding some repeat lines
-3. test_3: based on test_1, test invalid zip code cases, invalid date cases, invalid other non-important fileds cases
-4. test_4: first 50000 lines from the 2017-2018 file download from [Federal Election Commission](http://classic.fec.gov/finance/disclosure/ftpdet.shtml#a2017_2018), 
+* Test_1: Test case provided by Insight Data Engineering.
+* Test_2: Based on test_1, adding some repeat lines
+* Test_3: Based on test_1, testing invalid zip code cases, invalid date cases, invalid other non-important fileds cases
+* Test_4: It contains the first 50000 lines from the Federal Election Commission 2017-2018 individual contribution file downloaded from [Federal Election Commission](http://classic.fec.gov/finance/disclosure/ftpdet.shtml#a2017_2018), 
